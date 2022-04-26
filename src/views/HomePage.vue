@@ -23,8 +23,11 @@
 
       <div id="bottomSection">
         <PodcastSection />
+        <BlogsSection />
+        <ImageGallery />
+        <EmailForm />
+        <Footer />
       </div>
-
   </div>
 </template>
 
@@ -33,6 +36,10 @@ import spotifyImage from '../assets/images/spotifyImage.png';
 import googleImage from '../assets/images/googleImage.png';
 import appleImage from '../assets/images/appleImage.png';
 import PodcastSection from '../components/PodcastSection.vue';
+import BlogsSection from '../components/BlogsSection.vue';
+import ImageGallery from '../components/ImageGallery.vue';
+import EmailForm from '../components/EmailForm.vue';
+import Footer from '../components/Footer.vue';
 import axios from 'axios'
 import store from '../store'
 import { mapState } from 'vuex'
@@ -40,7 +47,11 @@ import { mapState } from 'vuex'
 export default {
   name: 'HomePage',
   components: {
-    PodcastSection
+    PodcastSection,
+    BlogsSection,
+    ImageGallery,
+    EmailForm,
+    Footer,
   },
   data() {
     return {
@@ -77,7 +88,7 @@ export default {
   top: 20vh;
   left: 0;
   width: 100%;
-  height: 2000px;
+  height: 3950px;
   background: #f6f7f8;
   overflow: scroll;
 }
@@ -173,7 +184,7 @@ export default {
   top: 80vh;
   left: 0;
   width: 100%;
-  height: 1000px;
-  background: lightcoral;
+  height: 3250px;
+  background: #f3f3f3;
 }
 </style>
