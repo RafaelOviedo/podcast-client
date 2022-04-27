@@ -5,7 +5,6 @@ const store = createStore({
     state: {
         heroContent: [],
         podcasts: [],
-        podcastsImages: [],
         blogs: [],
     },
     mutations: {
@@ -13,12 +12,10 @@ const store = createStore({
             state.heroContent = payload;
         },
         setPodcastData(state, payload) {
-            state.podcasts = payload.data;
-            state.podcastsImages = payload.imagesLinks;
+            state.podcasts = payload;
         },
         setBlogsData(state, payload) {
             state.blogs = payload;
-            console.log("STATE BLOGS", state.blogs);
         }
     },
     actions: {
@@ -29,23 +26,14 @@ const store = createStore({
 
         async getPodcastData({ commit }) {
             const response = await axios.get("http://localhost:8888/wordpress/wp-json/wp/v2/podcasts");
-            let innerLinks = [];
+            let podcastData = response.data;
 
-            for (let i = 0; i < response.data.length; i++) {
-                innerLinks.push(response.data[i]._links['wp:featuredmedia'][0].href);
+            for (let i = 0; i < podcastData.length; i++) {
+                let res = await axios.get(podcastData[i]._links['wp:featuredmedia'][0].href)
+                podcastData[i].customLink = res.data.guid.rendered;
             }
 
-            let innerLinksResponse = [];
-            for (let i = 0; i < innerLinks.length; i++) {
-               innerLinksResponse.push(await axios.get(innerLinks[i]));
-            }
-            
-            let imagesLinksArray = [];
-            for (let i = 0; i < innerLinksResponse.length; i++) {
-                imagesLinksArray.push(innerLinksResponse[i].data.guid.rendered);
-            }
-            
-            commit("setPodcastData", { data: response.data, imagesLinks: imagesLinksArray });
+            commit("setPodcastData", podcastData);
         },
         
         async getBlogsData({ commit }) {
