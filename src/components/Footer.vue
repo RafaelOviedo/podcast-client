@@ -195,4 +195,33 @@ export default {
 #footnote {
   color: #9B9B9B;
 }
+
+@media (max-width: 768px) {
+  #footerComponent {
+    top: 4260px;
+    height: 45%;
+  }
+  #container1 {
+    flex-direction: column;
+  }
+  #mediaBox {
+    width: 100%;
+    height: 50%;
+  }
+  #pagesBox {
+    width: 100%;
+    height: 40%;
+  }
+  #recentsBox {
+    width: 100%;
+    height: 40%;
+  }
+  #podcastsBox {
+    width: 100%;
+    height: 40%;
+  }
+  #container2 {
+    height: 0px;
+  }
+}
 </style>
