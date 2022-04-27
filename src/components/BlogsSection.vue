@@ -86,7 +86,7 @@ export default {
   align-items: center;
   flex-direction: column;
   position: absolute;
-  top: 950px;
+  top: 120vh;
   left: 9vw;
   width: 80%;
   height: 80vh;
@@ -175,5 +175,19 @@ export default {
   background: transparent;
   cursor: pointer;
   font-size: 30px;
+}
+
+@media (max-width: 768px) {
+  #blogsSection {
+    top: 2200px;
+    height: 150vh;
+  }
+  #blogsContainer {
+    flex-direction: column;
+  }
+  .blogElement {
+    width: 90%;
+    margin-bottom: 10%;
+  }
 }
 </style>
