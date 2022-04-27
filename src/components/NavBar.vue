@@ -12,11 +12,11 @@
         </div>
       </div>
       <ul id="navbarMenu" :class="!isMenuOpen ? 'notVisibility' : ''">
-        <router-link class="navItem navItem1" :class="homeR ? 'btnActive' : ''" :to="{ name: 'HomePage' }">Home</router-link>
-        <router-link class="navItem navItem2" :class="aboutR ? 'btnActive' : ''" :to="{ name: 'About' }">About</router-link>
-        <router-link class="navItem navItem3" :class="episodesR ? 'btnActive' : ''" :to="{ name: 'Episodes' }">Episodes</router-link>
-        <router-link class="navItem navItem4" :class="blogR ? 'btnActive' : ''" :to="{ name: 'Blog' }">Blog</router-link>
-        <router-link class="navItem navItem5" :class="contactR ? 'btnActive' : ''" :to="{ name: 'Contact' }">Contact</router-link>
+        <p class="navItem navItem1">Home</p>
+        <p class="navItem">About</p>
+        <p class="navItem">Episodes</p>
+        <p class="navItem">Blog</p>
+        <p class="navItem">Contact</p>
       </ul>
       <div id="buttonsContainer" :class="!isMenuOpen ? 'notVisibility' : ''">
         <button class="subscribeButton"><b>Subscribe</b></button>
@@ -51,46 +51,6 @@ export default {
     closeMenu() {
       this.isMenuOpen = !this.isMenuOpen
     },
-  },
-  computed: {
-    routePath() {
-      return this.$route.path;
-    }
-  },
-  watch: {
-    routePath() {
-      if (this.$route.path === '/') {
-        this.homeR = true;
-        this.aboutR = false;
-        this.episodesR = false;
-        this.blogR = false;
-        this.contactR = false;
-      } else if (this.$route.path === '/about') {
-        this.homeR = false;
-        this.aboutR = true;
-        this.episodesR = false;
-        this.blogR = false;
-        this.contactR = false;
-      } else if (this.$route.path === '/episodes') {
-        this.homeR = false;
-        this.aboutR = false;
-        this.episodesR = true;
-        this.blogR = false;
-        this.contactR = false;
-      } else if (this.$route.path === '/blog') {
-        this.homeR = false;
-        this.aboutR = false;
-        this.episodesR = false;
-        this.blogR = true;
-        this.contactR = false;
-      } else if (this.$route.path === '/contact') {
-        this.homeR = false;
-        this.aboutR = false;
-        this.episodesR = false;
-        this.blogR = false;
-        this.contactR = true;
-      }
-    }
   },
 }
 </script>
@@ -139,6 +99,12 @@ export default {
   color: #000;
   text-decoration: none;
   height: 30px;
+  cursor: pointer;
+}
+.navItem1 {
+  color: #f13c45;
+  pointer-events: none;
+  border-bottom: 1px solid black;
 }
 
 #buttonsContainer {
@@ -183,7 +149,7 @@ export default {
     @media (max-width: 768px) {
       #navBarContainer {
         width: 100%;
-        z-index: 2;
+        z-index: 5;
         height: 20vh;
       }
       .navBarContainerOpen {
