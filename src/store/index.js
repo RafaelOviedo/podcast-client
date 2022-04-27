@@ -20,24 +20,30 @@ const store = createStore({
     },
     actions: {
         async getHeroContent({ commit }) {
-            const response = await axios.get("http://localhost:8888/wordpress/wp-json/wp/v2/pages");
-            commit("setHeroContent", response.data[0].acf);
+            const response = await axios.get("/wp-json/wp/v2/pages");
+            for(let i = 0; i < response.data.length; i++) {
+                if(response.data[i].slug === 'home-page') {
+                    commit("setHeroContent", response.data[i].acf);
+                }
+            }
         },
 
         async getPodcastData({ commit }) {
-            const response = await axios.get("http://localhost:8888/wordpress/wp-json/wp/v2/podcasts");
+            const response = await axios.get("/wp-json/wp/v2/podcasts");
             let podcastData = response.data;
 
             for (let i = 0; i < podcastData.length; i++) {
-                let res = await axios.get(podcastData[i]._links['wp:featuredmedia'][0].href)
-                podcastData[i].customLink = res.data.guid.rendered;
+                if(podcastData[i]._links['wp:featuredmedia']) {
+                    let res = await axios.get(podcastData[i]._links['wp:featuredmedia'][0].href)
+                    podcastData[i].customLink = res.data.guid.rendered;
+                }
             }
 
             commit("setPodcastData", podcastData);
         },
         
         async getBlogsData({ commit }) {
-            const response = await axios.get("http://localhost:8888/wordpress/wp-json/wp/v2/blogposts");
+            const response = await axios.get("/wp-json/wp/v2/blogposts");
             
             let blogs = [];
             for (let i = 0; i < response.data.length; i++) {

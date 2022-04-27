@@ -25,7 +25,7 @@ export default {
     return {
       v$: useValidate(),
       email: '',
-      url: 'http://localhost:8888/wordpress/wp-json/contact-form-7/v1/contact-forms/68/feedback',
+      url: '/wp-json/contact-form-7/v1/contact-forms/68/feedback',
     }
   },
   validations() {

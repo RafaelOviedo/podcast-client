@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     async getData() {
-      const response = await axios.get('http://localhost:8888/wordpress/index.php/wp-json/wp/v2/media/65')
+      const response = await axios.get('/index.php/wp-json/wp/v2/media/65')
       this.data = response.data.guid.rendered;
     },
     getHeroContent() {
