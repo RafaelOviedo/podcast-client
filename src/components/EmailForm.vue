@@ -2,29 +2,49 @@
   <div id="formComponent">
     <h1 id="title">New Episode Every Week!</h1>
     <h3 id="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quibusdam asperiores<br>odit maiores odio eveniet</h3>
-    <form id="formContainer" action="">
-
-      <input id="mailInput" type="text"  placeholder="Type your mail">
-
-      <button @click.prevent="submitForm" id="submitButton" type="submit">
+    
+    <form id="formContainer" @submit.prevent="submitForm">
+      <input id="mailInput" type="text"  placeholder="Type your mail" v-model="email">
+      <button id="submitButton" type="submit">
           <b>Subscribe</b>&nbsp;&nbsp;&nbsp;
           <span id="arrow">&#8594;</span>
       </button>
-
     </form>
+
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import useValidate from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+
 export default {
   name: 'EmailForm',
   data() {
     return {
-      submitForm() {
-        console.log('submitted');
+      v$: useValidate(),
+      email: '',
+      url: 'http://localhost:8888/wordpress/wp-json/contact-form-7/v1/contact-forms/68/feedback',
+    }
+  },
+  validations() {
+    return {
+      email: { required, email },
+    }
+  },
+  methods: {
+    async submitForm() {
+      this.v$.$validate();
+      if(!this.v$.$error) {
+        let result = await axios.post(this.url, { email: this.email })
+        console.log("RESULT", result)
+        alert('Submitted!')
+      } else {
+        alert('Email must be valid');
       }
     }
-  }
+  },
 }
 </script>
 
@@ -60,7 +80,7 @@ export default {
   background: #fff;
   outline: none;
 } #mailInput::placeholder {
-    margin-left: 10px;
+    color: #9B9B9B;
   }
 #submitButton {
   width: 29%;
@@ -72,5 +92,30 @@ export default {
   cursor: pointer;
 } #arrow {
   font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  #formComponent {
+    top: 3900px;
+  }
+  #formComponent {
+    width: 90%;
+    height: 13%;
+    left: 5%;
+  }
+  #title {
+    text-align: center;
+  }
+  #formContainer {
+    width: 90%;
+  }
+  #mailInput {
+    width: 60%;
+    height: 60%;
+  }
+  #submitButton {
+    width: 35%;
+    height: 60%;
+  }
 }
 </style>
