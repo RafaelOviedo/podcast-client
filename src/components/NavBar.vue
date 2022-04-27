@@ -1,20 +1,28 @@
 <template>
   <div id="navbarOuter">
-    <nav id="navBarContainer">
-      <div id="logoContainer">
+    <nav id="navBarContainer" :class="isMenuOpen ? 'navBarContainerOpen' : ''">
+      <div id="logoContainer" class="logoContainer1" v-show="!isMenuOpen">
         <img id="logoImage" :src="nicasourceLogo" alt="logo">
       </div>
-      <ul id="navbarMenu">
+      <div id="burgerBox" :class="isMenuOpen ? 'notVisibility' : ''" class="burgerBox" @click="openMenu">
+        <div id="burgerCotnainer" class="burgerCotnainer">
+          <div class="burgerMenu"></div>
+          <div class="burgerMenu"></div>
+          <div class="burgerMenu"></div>
+        </div>
+      </div>
+      <ul id="navbarMenu" :class="!isMenuOpen ? 'notVisibility' : ''">
         <router-link class="navItem navItem1" :class="homeR ? 'btnActive' : ''" :to="{ name: 'HomePage' }">Home</router-link>
         <router-link class="navItem navItem2" :class="aboutR ? 'btnActive' : ''" :to="{ name: 'About' }">About</router-link>
         <router-link class="navItem navItem3" :class="episodesR ? 'btnActive' : ''" :to="{ name: 'Episodes' }">Episodes</router-link>
         <router-link class="navItem navItem4" :class="blogR ? 'btnActive' : ''" :to="{ name: 'Blog' }">Blog</router-link>
         <router-link class="navItem navItem5" :class="contactR ? 'btnActive' : ''" :to="{ name: 'Contact' }">Contact</router-link>
       </ul>
-      <div id="buttonsContainer">
+      <div id="buttonsContainer" :class="!isMenuOpen ? 'notVisibility' : ''">
         <button class="subscribeButton"><b>Subscribe</b></button>
         <button class="singinButton"><b>Sing-in</b></button>
       </div>
+      <button id="closeButton" v-show="isMenuOpen" @click="closeMenu">X</button>
     </nav>
   </div>
 </template>
@@ -27,6 +35,7 @@ export default {
   components: {},
   data() {
     return {
+      isMenuOpen: false,
       nicasourceLogo,
       homeR: false,
       aboutR: false,
@@ -34,6 +43,14 @@ export default {
       blogR: false,
       contactR: false,
     }
+  },
+  methods: {
+    openMenu() {
+      this.isMenuOpen = !this.isMenuOpen
+    },
+    closeMenu() {
+      this.isMenuOpen = !this.isMenuOpen
+    },
   },
   computed: {
     routePath() {
@@ -161,5 +178,92 @@ export default {
 }   .singinButton:active {
       background: #f13c45;
       color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      #navBarContainer {
+        width: 100%;
+        z-index: 2;
+        height: 20vh;
+      }
+      .navBarContainerOpen {
+        position: absolute;
+        top: 0;
+        height: 70vh !important;
+        border: 1px solid #000;
+        animation: openingMenu 0.5s;
+      }
+      #navbarMenu {
+        position: absolute;
+        top: 0;
+        left: 18%;
+        height: 60%;
+        z-index: 2;
+        flex-direction: column;
+      }
+      .logoContainer1 {
+        position: absolute;
+        top: 0;
+        left: 37%;
+        height: 100%;
+        justify-content: center;
+        z-index: 2;
+      }
+      .burgerBox {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+        height: 100%;
+      }
+      .burgerCotnainer {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        width: 40%;
+        height: 35%;
+        cursor: pointer;
+      }
+      .burgerMenu {
+        width: 50%;
+        height: 15%;
+        background: #000;
+      }
+      #buttonsContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 65%;
+        height: 35%;
+        width: 100%;
+      }
+      #closeButton {
+        position: absolute;
+        top: 2%;
+        left: 83%;
+        width: 12%;
+        height: 5%;
+        background: #000;
+        color: #fff;
+        border: none;
+      }
+      .notVisibility {
+        visibility: hidden;
+      }
+
+      @keyframes openingMenu {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
     }
 </style>
