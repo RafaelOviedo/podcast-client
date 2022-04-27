@@ -1,24 +1,8 @@
 # podcast-client
 
-## Project setup
+## To build up the project
 ```
-npm install
+Clone this repository.
+Once is cloned in your machine, open a console, step into the project folder
+and run 'npm install', then build it up with 'npm run serve'
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
