@@ -166,6 +166,7 @@ export default {
   background: black;
   opacity: 0.97;
   animation: openingModal 0.5s;
+  z-index: 6;
 }
 
 @keyframes openingModal {
@@ -214,5 +215,65 @@ export default {
   height: 5%;
   font-size: 30px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  #galleryComponent {
+    top: 3200px;
+  }
+  #photosContainer {
+    width: 110%;
+  }
+  .mountain {
+    grid-column: 2 / 5;
+    grid-row: 1 / 3;
+  }
+  .butterfly {
+    grid-column: 1 / 4;
+    grid-row: 1 / 3;
+  }
+  .ocean {
+    grid-column: 3 / 5;
+    grid-row: 1 / 4;
+  }
+  .volcano {
+    grid-column: 2;
+    grid-row: 1 / 5;
+  }
+  .galaxy {
+    grid-column: 2;
+    grid-row: 4;
+  }
+  .woods {
+    grid-column: 3 / 5;
+    grid-row: 1 / 3;
+  }
+  .people {
+    grid-column: 2;
+    grid-row: 1 / 1;
+  }
+  .pyramids {
+    grid-column: 1 / 4;
+    grid-row: 2 / 4;
+  }
+  .computerSetup {
+    grid-column: 1 / 6;
+    grid-row: 3 / 5;
+  }
+  .rocks {
+    grid-column: 3 / 5;
+    grid-row: 3 / 5;
+  }
+  #imageContainer {
+    top: 10%;
+    left: 10%;
+    width: 70%;
+    height: 70%;
+  }
+  #closeButton {
+    width: 10%;
+    height: 5%;
+    left: 48%;
+  }
 }
 </style>
