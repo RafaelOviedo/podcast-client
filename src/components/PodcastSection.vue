@@ -187,8 +187,8 @@ export default {
 
 @media (max-width: 768px) {
   #podcastSection {
-    top: 35vh;
-    height: 270vh;
+    top: 230px;
+    height: 60%;
     justify-content: space-evenly;
   }
   #topContainer {
