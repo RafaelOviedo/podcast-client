@@ -195,7 +195,7 @@ export default {
   #imageContainer {
     position: absolute;
     top: 32vh;
-    left: -22vw;
+    left: 0;
     z-index: 1;
     opacity: 0.15;
     height: 20% !important;

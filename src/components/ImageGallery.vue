@@ -219,7 +219,8 @@ export default {
 
 @media (max-width: 768px) {
   #galleryComponent {
-    top: 3200px;
+    top: 3270px;
+    height: 700px;
   }
   #photosContainer {
     width: 110%;

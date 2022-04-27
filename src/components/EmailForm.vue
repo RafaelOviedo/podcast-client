@@ -94,14 +94,18 @@ export default {
   font-size: 15px;
 }
 
+@media (max-width: 1135px) {
+  #formContainer {
+    width: 110%;
+  }
+}
 @media (max-width: 768px) {
   #formComponent {
-    top: 3900px;
-  }
-  #formComponent {
-    width: 90%;
+    width: 90% !important;
     height: 13%;
     left: 5%;
+    top: 3970px;
+    height: 400px;
   }
   #title {
     text-align: center;

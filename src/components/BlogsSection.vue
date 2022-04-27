@@ -180,7 +180,7 @@ export default {
 @media (max-width: 768px) {
   #blogsSection {
     top: 2200px;
-    height: 150vh;
+    height: 1100px;
   }
   #blogsContainer {
     flex-direction: column;

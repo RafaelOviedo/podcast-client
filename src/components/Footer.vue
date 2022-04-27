@@ -198,8 +198,8 @@ export default {
 
 @media (max-width: 768px) {
   #footerComponent {
-    top: 4260px;
-    height: 45%;
+    top: 4300px;
+    height: 1400px;
   }
   #container1 {
     flex-direction: column;
