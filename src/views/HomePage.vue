@@ -187,4 +187,54 @@ export default {
   height: 3250px;
   background: #f3f3f3;
 }
+
+@media (max-width: 768px) {
+  #heroSection {
+    z-index: 2;
+  }
+  #imageContainer {
+    position: absolute;
+    top: 32vh;
+    left: -22vw;
+    z-index: 1;
+    opacity: 0.15;
+    height: 20% !important;
+  }
+  #textContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -5vh;
+    left: 0;
+    width: 100%;
+    height: 120vh;
+  }
+  #innerBox {
+    width: 90%;
+    text-align: center;
+  }
+  #title {
+    font-size: 30px;
+  }
+  #subtitle {
+    font-size: 15px;
+  }
+  #buttonsContainer {
+    height: 50%;
+    flex-direction: column;
+  } #button1 {
+     width: 50%;
+     height: 20%;
+     z-index: 2;
+  } #button2 {
+     width: 80%;
+     height: 20%;
+     z-index: 2;
+  } #button3 {
+     width: 80%;
+     height: 20%;
+     z-index: 2;
+  }
+}
 </style>
